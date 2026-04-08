@@ -1,0 +1,14 @@
+# Google / YouTube
+GOOGLE_CLIENT_ID=your_client_id_here
+GOOGLE_CLIENT_SECRET=your_client_secret_here
+GOOGLE_REDIRECT_URI=https://your-render-app.onrender.com/auth/google/callback
+GOOGLE_REFRESH_TOKEN=fill_this_in_after_first_auth
+
+# Meta / Instagram
+META_APP_ID=your_meta_app_id_here
+META_APP_SECRET=your_meta_app_secret_here
+META_REDIRECT_URI=https://your-render-app.onrender.com/auth/instagram/callback
+META_ACCESS_TOKEN=fill_this_in_after_first_auth
+
+# Server
+PORT=3000
