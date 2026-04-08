@@ -215,8 +215,8 @@ app.get('/api/all', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
+app.get('/', (req, res) => res.send('<html><head><title>Mikey Dashboard</title></head><body><h1>Mikey\'s Dashboard API</h1><p>Status: running</p></body></html>'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Dashboard backend running on port ${PORT}`));
