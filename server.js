@@ -151,15 +151,15 @@ app.get('/api/instagram', async (req, res) => {
     const igData = await igRes.json();
 
     if (!igData.instagram_business_account) {
-      return res.json({ debug: 'no_ig_account', page: pageName, pageId, raw: igData });
+      return res.json({ debug: 'no_ig_account', raw: igData });
     }
 
     const igId = igData.instagram_business_account.id;
 
     const [insightsRes, profileRes, mediaRes] = await Promise.all([
-      fetch(`https://graph.facebook.com/v19.0/${igId}/insights?metric=impressions,reach,profile_views,follower_count,website_clicks&period=day&access_token=${pageToken}`),
-      fetch(`https://graph.facebook.com/v19.0/${igId}?fields=followers_count,media_count,username&access_token=${pageToken}`),
-      fetch(`https://graph.facebook.com/v19.0/${igId}/media?fields=id,caption,media_type,timestamp,like_count,comments_count,insights.metric(impressions,reach,saved,shares)&limit=10&access_token=${pageToken}`),
+      fetch(`https://graph.facebook.com/v19.0/${igId}/insights?metric=impressions,reach,profile_views,follower_count,website_clicks&period=day&access_token=${token}`),
+      fetch(`https://graph.facebook.com/v19.0/${igId}?fields=followers_count,media_count,username&access_token=${token}`),
+      fetch(`https://graph.facebook.com/v19.0/${igId}/media?fields=id,caption,media_type,timestamp,like_count,comments_count,insights.metric(impressions,reach,saved,shares)&limit=10&access_token=${token}`),
     ]);
 
     const [insights, profile, media] = await Promise.all([
